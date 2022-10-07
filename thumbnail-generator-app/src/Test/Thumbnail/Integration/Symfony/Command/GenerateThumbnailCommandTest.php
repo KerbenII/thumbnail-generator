@@ -89,7 +89,9 @@ final class GenerateThumbnailCommandTest extends KernelTestCase
         $path = stream_get_meta_data($temp)['uri'];
         fwrite($temp, file_get_contents($absolutePath));
         $imageSize = getimagesize($path);
+        unlink($path);
         fclose($temp);
+
         return $imageSize;
     }
 }
