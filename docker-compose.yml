@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  thumbnail-generator-app:
+    build:
+      context: docker/php-fpm
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ./thumbnail-generator-app:/var/www/thumbnail-generator-app
