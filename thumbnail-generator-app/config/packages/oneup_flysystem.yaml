@@ -1,0 +1,18 @@
+# Read the documentation: https://github.com/1up-lab/OneupFlysystemBundle
+oneup_flysystem:
+    adapters:
+        images_adapter:
+            local:
+                location: '%env(resolve:IMAGE_MOUNT)%'
+        s3_adapter:
+            awss3v3:
+                client: Aws\S3\S3ClientInterface
+                bucket: '%env(S3_BUCKET)%'
+                prefix: ''
+    filesystems:
+        images_filesystem:
+            adapter: images_adapter
+            alias: League\Flysystem\Filesystem
+        s3_filesystem:
+            adapter: s3_adapter
+            alias: League\Flysystem\Filesystem
